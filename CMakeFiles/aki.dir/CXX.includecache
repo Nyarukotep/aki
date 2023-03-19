@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/akiha/code/aki/aki/log.cc
+log.h
+/home/akiha/code/aki/aki/log.h
+map
+-
+iostream
+-
+functional
+-
+time.h
+-
+string.h
+-
+
+/home/akiha/code/aki/aki/log.h
+string
+-
+stdint.h
+-
+memory
+-
+list
+-
+sstream
+-
+fstream
+-
+vector
+-
+map
+-
+
