@@ -24,9 +24,25 @@ vector
 map
 -
 
+/home/akiha/code/aki/aki/util.h
+stdio.h
+-
+pthread.h
+-
+sys/types.h
+-
+unistd.h
+-
+sys/syscall.h
+-
+stdint.h
+-
+
 /home/akiha/code/aki/test/test.cc
 iostream
 -
 ../aki/log.h
 /home/akiha/code/aki/aki/log.h
+../aki/util.h
+/home/akiha/code/aki/aki/util.h
 

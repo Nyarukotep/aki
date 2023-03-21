@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/akiha/code/aki/aki/log.cc" "/home/akiha/code/aki/CMakeFiles/aki.dir/aki/log.cc.o"
+  "/home/akiha/code/aki/aki/util.cc" "/home/akiha/code/aki/CMakeFiles/aki.dir/aki/util.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

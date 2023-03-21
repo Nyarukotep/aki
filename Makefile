@@ -166,6 +166,33 @@ aki/log.cc.s:
 	$(MAKE) -f CMakeFiles/aki.dir/build.make CMakeFiles/aki.dir/aki/log.cc.s
 .PHONY : aki/log.cc.s
 
+aki/util.o: aki/util.cc.o
+
+.PHONY : aki/util.o
+
+# target to build an object file
+aki/util.cc.o:
+	$(MAKE) -f CMakeFiles/aki.dir/build.make CMakeFiles/aki.dir/aki/util.cc.o
+.PHONY : aki/util.cc.o
+
+aki/util.i: aki/util.cc.i
+
+.PHONY : aki/util.i
+
+# target to preprocess a source file
+aki/util.cc.i:
+	$(MAKE) -f CMakeFiles/aki.dir/build.make CMakeFiles/aki.dir/aki/util.cc.i
+.PHONY : aki/util.cc.i
+
+aki/util.s: aki/util.cc.s
+
+.PHONY : aki/util.s
+
+# target to generate assembly for a file
+aki/util.cc.s:
+	$(MAKE) -f CMakeFiles/aki.dir/build.make CMakeFiles/aki.dir/aki/util.cc.s
+.PHONY : aki/util.cc.s
+
 test/test.o: test/test.cc.o
 
 .PHONY : test/test.o
@@ -206,6 +233,9 @@ help:
 	@echo "... aki/log.o"
 	@echo "... aki/log.i"
 	@echo "... aki/log.s"
+	@echo "... aki/util.o"
+	@echo "... aki/util.i"
+	@echo "... aki/util.s"
 	@echo "... test/test.o"
 	@echo "... test/test.i"
 	@echo "... test/test.s"

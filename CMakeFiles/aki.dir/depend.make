@@ -4,3 +4,6 @@
 CMakeFiles/aki.dir/aki/log.cc.o: aki/log.cc
 CMakeFiles/aki.dir/aki/log.cc.o: aki/log.h
 
+CMakeFiles/aki.dir/aki/util.cc.o: aki/util.cc
+CMakeFiles/aki.dir/aki/util.cc.o: aki/util.h
+

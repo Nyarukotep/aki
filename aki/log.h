@@ -10,6 +10,20 @@
 #include <vector>
 #include <map>
 
+#define AKI_LOG_LEVEL(logger, level) \
+    if(logger->getLevel() <= level) \
+        aki::LogEventWrap(aki::LogEvent::ptr(new aki::LogEvent(logger, level, \
+                        __FILE__, __LINE__, 0, aki::GetThreadId(),\
+                aki::GetFiberId(), time(0)))).getSS()
+
+#define AKI_LOG_DEBUG(logger) AKI_LOG_LEVEL(logger, aki::LogLevel::DEBUG)
+#define AKI_LOG_INFO(logger) AKI_LOG_LEVEL(logger, aki::LogLevel::INFO)
+#define AKI_LOG_WARN(logger) AKI_LOG_LEVEL(logger, aki::LogLevel::WARN)
+#define AKI_LOG_ERROR(logger) AKI_LOG_LEVEL(logger, aki::LogLevel::ERROR)
+#define AKI_LOG_FATAL(logger) AKI_LOG_LEVEL(logger, aki::LogLevel::FATAL)
+
+
+
 namespace aki {
 
     class Logger;
@@ -30,7 +44,7 @@ namespace aki {
     class LogEvent {
         public:
             typedef std::shared_ptr<LogEvent> ptr;
-            LogEvent(const char* file, int32_t line, uint32_t elapse
+            LogEvent(std::shared_ptr<Logger> logger, LogLevel::Level level, const char* file, int32_t line, uint32_t elapse
                 ,uint32_t thread_id, uint32_t fiber_id, uint64_t time);
 
             const char* getFile() const { return m_file;}
@@ -41,6 +55,7 @@ namespace aki {
             uint64_t getTime() const { return m_time;}
             std::string getContent() const { return m_ss.str();}
             std::shared_ptr<Logger> getLogger() const { return m_logger;}
+            LogLevel::Level getLevel() const { return m_level;}
             std::stringstream& getSS() { return m_ss;}
         private:
             const char* m_file = nullptr;
@@ -55,6 +70,14 @@ namespace aki {
             LogLevel::Level m_level;
     };
 
+    class LogEventWrap {
+        public:
+            LogEventWrap(LogEvent::ptr e);
+            ~LogEventWrap();
+            std::stringstream& getSS();
+        private:
+            LogEvent::ptr m_event;
+    };
 
     class LogFormatter {
         public:
@@ -112,7 +135,6 @@ namespace aki {
             void setFormatter(const std::string& val);
 
             LogFormatter::ptr getFormatter();
-
 
         private:
             std::string m_name;
