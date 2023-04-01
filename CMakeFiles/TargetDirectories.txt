@@ -1,4 +1,4 @@
-/home/akiha/code/aki/CMakeFiles/rebuild_cache.dir
-/home/akiha/code/aki/CMakeFiles/edit_cache.dir
-/home/akiha/code/aki/CMakeFiles/test.dir
 /home/akiha/code/aki/CMakeFiles/aki.dir
+/home/akiha/code/aki/CMakeFiles/test.dir
+/home/akiha/code/aki/CMakeFiles/edit_cache.dir
+/home/akiha/code/aki/CMakeFiles/rebuild_cache.dir

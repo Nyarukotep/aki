@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/aki.dir/aki/log.cc.o"
+  "CMakeFiles/aki.dir/aki/log.cc.o.d"
   "CMakeFiles/aki.dir/aki/util.cc.o"
+  "CMakeFiles/aki.dir/aki/util.cc.o.d"
   "lib/libaki.pdb"
   "lib/libaki.so"
 )

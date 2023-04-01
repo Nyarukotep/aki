@@ -9,6 +9,7 @@
 #include <fstream>
 #include <vector>
 #include <map>
+#include <stdarg.h>
 
 #define AKI_LOG_LEVEL(logger, level) \
     if(logger->getLevel() <= level) \
@@ -22,6 +23,17 @@
 #define AKI_LOG_ERROR(logger) AKI_LOG_LEVEL(logger, aki::LogLevel::ERROR)
 #define AKI_LOG_FATAL(logger) AKI_LOG_LEVEL(logger, aki::LogLevel::FATAL)
 
+#define AKI_LOG_FMT_LEVEL(logger, level, fmt, ...) \
+    if(logger->getLevel() <= level) \
+        aki::LogEventWrap(aki::LogEvent::ptr(new aki::LogEvent(logger, level, \
+                        __FILE__, __LINE__, 0, aki::GetThreadId(),\
+                aki::GetFiberId(), time(0)))).getEvent()->format(fmt, __VA_ARGS__)
+
+#define AKI_LOG_FMT_DEBUG(logger, fmt, ...) AKI_LOG_FMT_LEVEL(logger, aki::LogLevel::DEBUG, fmt, __VA_ARGS__)
+#define AKI_LOG_FMT_INFO(logger, fmt, ...)  AKI_LOG_FMT_LEVEL(logger, aki::LogLevel::INFO, fmt, __VA_ARGS__)
+#define AKI_LOG_FMT_WARN(logger, fmt, ...)  AKI_LOG_FMT_LEVEL(logger, aki::LogLevel::WARN, fmt, __VA_ARGS__)
+#define AKI_LOG_FMT_ERROR(logger, fmt, ...) AKI_LOG_FMT_LEVEL(logger, aki::LogLevel::ERROR, fmt, __VA_ARGS__)
+#define AKI_LOG_FMT_FATAL(logger, fmt, ...) AKI_LOG_FMT_LEVEL(logger, aki::LogLevel::FATAL, fmt, __VA_ARGS__)
 
 
 namespace aki {
@@ -57,6 +69,8 @@ namespace aki {
             std::shared_ptr<Logger> getLogger() const { return m_logger;}
             LogLevel::Level getLevel() const { return m_level;}
             std::stringstream& getSS() { return m_ss;}
+            void format(const char* fmt, ...);
+            void format(const char* fmt, va_list al);
         private:
             const char* m_file = nullptr;
             int32_t m_line = 0;
@@ -75,6 +89,7 @@ namespace aki {
             LogEventWrap(LogEvent::ptr e);
             ~LogEventWrap();
             std::stringstream& getSS();
+            LogEvent::ptr getEvent() const { return m_event;}
         private:
             LogEvent::ptr m_event;
     };
